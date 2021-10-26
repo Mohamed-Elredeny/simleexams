@@ -72,7 +72,7 @@
     <div class="vertical-menu">
 
         <div data-simplebar class="h-100">
-                @include('admin.sections.sections_ar')
+                @include('admin.sections')
 
 
         </div>
