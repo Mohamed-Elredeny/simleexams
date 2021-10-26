@@ -17,29 +17,51 @@
                         <strong>{{ $message }}</strong>
                     </div>
                     @endif
-                    <h5 class="mb-5 mt-3">اضافة مسؤول جديد</h5>
-                    <form method="post" action="{{route('admins.store')}}" enctype="multipart/form-data">
+                    <h5 class="mb-5 mt-3">اضافة مادة جديدة</h5>
+                    <form method="post" action="{{route('admin.subjects.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">الاسم</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> الاسم بالعربية</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" id="example-text-input" name="name">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">البريد الالكتروني</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="email" id="example-text-input" name="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">كلمة المرور</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="password" id="example-text-input" name="password">
+                                <input class="form-control" type="text" id="example-text-input" name="title_ar">
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> الاسم بالعربية</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="example-text-input" name="title_en">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> التفاصيل بالعربية</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" type="text" id="example-text-input" name="description_ar"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> التفاصيل بالانجليزية</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" type="text" id="example-text-input" name="description_en"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> السعر</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="example-text-input" name="price">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label"> صورة الغلاف</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="file" id="example-text-input" name="media_id">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-dark w-25">اضافة</button>

@@ -30,15 +30,22 @@
 
                         <thead>
                         <tr>
-                            <th>الاسم</th>
-                            <th>البريد الالكتروني</th>
+                            <th>الصورة</th>
+                            <th>الاسم بالعربيه</th>
+                            <th>الاسم بالانجليزية</th>
+                            <th>التفاصيل بالانجليزية</th>
+                            <th>التفاصيل بالانجليزية</th>
+                            <th>التقييم</th>
+                            <th>السعر</th>
                             <th>التحكم</th>
                         </tr>
                         </thead>
                         <?php $counter =1; ?>
                         <tbody>
                             @foreach($admins as $admin)
-
+                                <tr>
+                                    <img src="" alt="" style="height:100px;width:100px">
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

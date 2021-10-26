@@ -17,6 +17,5 @@ class Subject extends Model
             'tag_id',
             'tag_id',
             'media_id',
-            'media_id'
     ];
 }

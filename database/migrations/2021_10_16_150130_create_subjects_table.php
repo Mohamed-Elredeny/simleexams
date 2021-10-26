@@ -22,10 +22,10 @@ class CreateSubjectsTable extends Migration
             $table->text('description_en');
 
 
-            $table->double('rate');
+            $table->double('rate')->nullable();
             $table->double('price');
 
-            $table->bigInteger('tag_id')->unsigned();
+            $table->bigInteger('tag_id')->unsigned()->nullable();
             $table->foreign('tag_id')->references('id')->on('tags');
 
             $table->bigInteger('media_id')->unsigned();

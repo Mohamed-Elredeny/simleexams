@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Media;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+            return view('admin.subjects.create');
     }
 
     /**
@@ -35,9 +36,23 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function media(Request $request,$type,$table){
+        $fileName = $request->media_id->getClientOriginalName();
+        $file_to_store = time() . '_' . $fileName ;
+        $request->media_id->move(public_path('assets/images/'.$table.'/'), $file_to_store);
+        $media = Media::create([
+            'type'=>$type,
+            'table_name'=>$table,
+            'file'=>$file_to_store
+        ]);
+        return $media;
+    }
     public function store(Request $request)
     {
-        //
+        $request->media_id = $this->media($request,'image','subjects');
+        Subject::create(
+           $request->all()
+        );
     }
 
     /**
