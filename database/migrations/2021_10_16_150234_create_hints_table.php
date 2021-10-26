@@ -16,8 +16,8 @@ class CreateHintsTable extends Migration
         Schema::create('hints', function (Blueprint $table) {
             $table->id();
 
-            $table->text('title_ar');
-            $table->text('title_en');
+            $table->text('description_ar');
+            $table->text('description_en');
 
             $table->integer('media_id')->unsigned();
             $table->foreign('media_id')->references('id')->on('media');

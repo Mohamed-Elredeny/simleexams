@@ -25,6 +25,10 @@ class CreateLessonsTable extends Migration
             $table->foreign('media_id')->references('id')->on('media');
 
 
+            $table->integer('section_id')->unsigned();
+            $table->foreign('section_id')->references('id')->on('sections');
+
+
             $table->timestamps();
         });
     }
