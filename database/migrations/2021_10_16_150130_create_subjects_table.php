@@ -15,9 +15,22 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->text('image');
+            $table->string('title_ar');
+            $table->string('title_en');
+
+            $table->text('description_ar');
+            $table->text('description_en');
+
+
+            $table->double('rate');
+            $table->double('price');
+
+            $table->integer('tag_id')->unsigned();
+            $table->foreign('tag_id')->references('id')->on('tags');
+
+            $table->integer('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media');
+
             $table->timestamps();
         });
     }

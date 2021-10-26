@@ -15,6 +15,19 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+
+            $table->text('title_ar');
+            $table->text('title_en');
+
+            $table->integer('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media');
+
+            $table->string('answers');
+            $table->string('right_answer');
+
+            $table->integer('hint_id')->unsigned();
+            $table->foreign('hint_id')->references('id')->on('hints');
+
             $table->timestamps();
         });
     }

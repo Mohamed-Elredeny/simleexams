@@ -15,6 +15,15 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            //Exam or just for practice
+            $table->string('type');
+
+            $table->string('name_ar');
+            $table->string('name_en');
+
+            $table->integer('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media');
+
             $table->timestamps();
         });
     }
