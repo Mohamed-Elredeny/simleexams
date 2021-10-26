@@ -19,6 +19,7 @@ Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson')
 Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
 Route::get('/about', function () {return view('Site.about');})->name('about');
 Route::get('/blog', function () {return view('Site.blog');})->name('blog');
+Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
 Auth::routes();
 
