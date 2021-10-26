@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     protected $table ='subjects';
-    protected $fillable =[
+    protected $fillable = [
             'title_ar',
             'title_en',
             'description_ar',

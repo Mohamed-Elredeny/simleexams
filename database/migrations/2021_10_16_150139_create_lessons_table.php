@@ -21,11 +21,11 @@ class CreateLessonsTable extends Migration
             $table->text('description_ar');
             $table->text('description_en');
 
-            $table->integer('media_id')->unsigned();
+            $table->bigInteger('media_id')->unsigned();
             $table->foreign('media_id')->references('id')->on('media');
 
 
-            $table->integer('section_id')->unsigned();
+            $table->bigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections');
 
 

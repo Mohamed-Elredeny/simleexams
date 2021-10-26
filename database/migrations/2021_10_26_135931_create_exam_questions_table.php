@@ -16,10 +16,10 @@ class CreateExamQuestionsTable extends Migration
         Schema::create('exam_questions', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('exam_id')->unsigned();
+            $table->bigInteger('exam_id')->unsigned();
             $table->foreign('exam_id')->references('id')->on('exams');
 
-            $table->integer('question_id')->unsigned();
+            $table->bigInteger('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions');
 
 

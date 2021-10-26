@@ -25,10 +25,10 @@ class CreateSubjectsTable extends Migration
             $table->double('rate');
             $table->double('price');
 
-            $table->integer('tag_id')->unsigned();
+            $table->bigInteger('tag_id')->unsigned();
             $table->foreign('tag_id')->references('id')->on('tags');
 
-            $table->integer('media_id')->unsigned();
+            $table->bigInteger('media_id')->unsigned();
             $table->foreign('media_id')->references('id')->on('media');
 
             $table->timestamps();

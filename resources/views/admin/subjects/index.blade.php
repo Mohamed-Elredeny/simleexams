@@ -38,32 +38,7 @@
                         <?php $counter =1; ?>
                         <tbody>
                             @foreach($admins as $admin)
-                            <tr>
-                            <th>{{$admin->name}}</th>
-                            <th>{{$admin->email}}</th>
 
-                                <th>
-                                <center>
-                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                التحكم
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <a class="btn btn-dark col-sm-12"  href="{{route('admins.edit',['admin'=>$admin->id])}}">تعديل</a>
-                                                <form method="post" action="{{route('admins.destroy',['admin'=>$admin->id])}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-dark col-sm-12" >حذف</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </center>
-                            </th>
-                            </tr>
-                                <?php $counter++; ?>
                             @endforeach
                         </tbody>
                     </table>

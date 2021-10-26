@@ -18,7 +18,7 @@ class CreateSectionsTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
 
-            $table->integer('subject_id')->unsigned();
+            $table->bigInteger('subject_id')->unsigned();
             $table->foreign('subject_id')->references('id')->on('subjects');
 
             $table->timestamps();
