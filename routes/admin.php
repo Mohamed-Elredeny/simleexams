@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('admin.home');
 });
 
-Route::resource('admins','AdminController');
-Route::resource('subAdmins','AdminController');
-Route::resource('packages','AdminController');
-Route::resource('transactions','AdminController');
+Route::resource('instructors','InstructorController');
+Route::resource('students','StudentController');
 Route::resource('subjects','SubjectController');
-Route::resource('lessons','AdminController');
-Route::resource('questions','AdminController');
-Route::resource('exams','AdminController');
+Route::resource('lessons','LessonController');
+Route::resource('questions','QuestionController');
+Route::resource('exams','ExamController');
