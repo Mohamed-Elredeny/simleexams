@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,22 @@ Route::get('/about', function () {return view('Site.about');})->name('about');
 Route::get('/blog', function () {return view('Site.blog');})->name('blog');
 Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('rand',function (){
    $rand = rand(0,1);
    $rand1 = ['mohamed','martina'];
     return $rand1[$rand];
 });
+
+
+    Auth::routes();
+    // Route::get('/', function () {
+    //     return view('login');
+    // })->name('login');
+    Route::any('/checkAuthLogin', 'HomeController@checkAuthLogin')->name('check.auth.login');
+
+    Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')->name('admin.login');
+    Route::any('/supporterLogin/{password}/{email}', 'Auth\SupporterLoginController@login')->name('supporter.login');
+    Route::any('/vendorLogin/{password}/{email}', 'Auth\VendorLoginController@login')->name('vendor.login');
+
+    Route::get('/vendorRegister', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
+    Route::post('/vendorRegister', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');

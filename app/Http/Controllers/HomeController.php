@@ -6,23 +6,22 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+ 
+    public function checkAuthLogin(Request $request)
     {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+        if($request->type == 'admin')
+        {
+            return redirect()->route('admin.login',['password'=> $request->password, 'email'=>$request->email]);
+        }
+        elseif($request->type == 'supporter')
+        {
+            return redirect()->route('supporter.login',['password'=> $request->password, 'email'=>$request->email]);
+        }
+        elseif($request->type == 'vendor')
+        {
+            // return 'vendor';
+            return redirect()->route('vendor.login',['password'=> $request->password, 'email'=>$request->email]);
+        }
+        return 'sad';
     }
 }
