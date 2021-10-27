@@ -24,34 +24,34 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> الاسم بالعربية</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" id="example-text-input" name="title_ar">
+                                <input class="form-control" type="text" id="example-text-input" name="title_ar" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> الاسم بالعربية</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" id="example-text-input" name="title_en">
+                                <input class="form-control" type="text" id="example-text-input" name="title_en" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> التفاصيل بالعربية</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" type="text" id="example-text-input" name="description_ar"></textarea>
+                                <textarea class="form-control" type="text" id="example-text-input" name="description_ar" required></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> التفاصيل بالانجليزية</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" type="text" id="example-text-input" name="description_en"></textarea>
+                                <textarea class="form-control" type="text" id="example-text-input" name="description_en" required></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> السعر</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" id="example-text-input" name="price">
+                                <input class="form-control" type="text" id="example-text-input" name="price" required>
                             </div>
                         </div>
 
@@ -59,9 +59,10 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> صورة الغلاف</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="example-text-input" name="media_id">
+                                <input class="form-control" type="file" id="example-text-input" name="media_id" required>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-dark w-25">اضافة</button>

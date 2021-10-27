@@ -33,7 +33,7 @@
                             <th>الصورة</th>
                             <th>الاسم بالعربيه</th>
                             <th>الاسم بالانجليزية</th>
-                            <th>التفاصيل بالانجليزية</th>
+                            <th>التفاصيل بالعربية</th>
                             <th>التفاصيل بالانجليزية</th>
                             <th>التقييم</th>
                             <th>السعر</th>
@@ -44,7 +44,23 @@
                         <tbody>
                             @foreach($admins as $admin)
                                 <tr>
-                                    <img src="" alt="" style="height:100px;width:100px">
+                                    <td>
+                                        <img src="{{asset('assets/images/subjects/'.$admin->media->file)}}" alt="" style="height:100px;width:100px">
+
+                                    </td>
+                                    <td>
+                                        {{$admin->title_ar}}
+                                    </td>
+                                    <td>
+                                        {{$admin->title_en}}
+                                    </td>
+                                    <td>
+                                        {{$admin->description_ar}}
+                                    </td>
+                                    <td>
+                                        {{$admin->description_en}}
+                                    </td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                         </tbody>

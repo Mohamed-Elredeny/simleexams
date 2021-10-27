@@ -15,7 +15,9 @@ class Subject extends Model
             'rate',
             'price',
             'tag_id',
-            'tag_id',
             'media_id',
     ];
+    public function media(){
+        return $this->belongsTo(Media::class,'media_id');
+    }
 }

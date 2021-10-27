@@ -27,7 +27,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-            return view('admin.subjects.create');
+        return view('admin.subjects.create');
     }
 
     /**
@@ -45,14 +45,21 @@ class SubjectController extends Controller
             'table_name'=>$table,
             'file'=>$file_to_store
         ]);
-        return $media;
+        return $media->id;
     }
     public function store(Request $request)
     {
-        $request->media_id = $this->media($request,'image','subjects');
-        Subject::create(
-           $request->all()
-        );
+        Subject::create([
+            'title_ar'=>$request->title_ar,
+            'title_en'=>$request->title_en,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'rate'=>0,
+            'price'=>$request->price,
+            'tag_id'=>$request->tag_id,
+            'media_id'=> $this->media($request,'image','subjects')
+        ]);
+        return redirect()->back()->with('message','Done Successfully');
     }
 
     /**
@@ -63,7 +70,8 @@ class SubjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('admin.subjects.show',compact('subject'));
     }
 
     /**
@@ -74,7 +82,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $subject = Subject::find($id);
+        return view('admin.subjects.edit',compact('subject'));
     }
 
     /**
@@ -86,7 +96,23 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Subject::find($id);
+        if($request->media_id){
+           $media_id = $this->media($request,'image','subjects');
+        }else{
+            $media_id = $subject->media_id;
+        }
+
+        Subject::update([
+            'title_ar'=>$request->title_ar,
+            'title_en'=>$request->title_en,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'price'=>$request->price,
+            'tag_id'=>$request->tag_id,
+            'media_id'=> $media_id
+        ]);
+        return redirect()->back()->with('message','Done Successfully');
     }
 
     /**
@@ -97,6 +123,8 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subject::destroy($id);
+        return redirect()->back()->with('message','Done Successfully');
+
     }
 }
