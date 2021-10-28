@@ -13,14 +13,14 @@ class HomeController extends Controller
         {
             return redirect()->route('admin.login',['password'=> $request->password, 'email'=>$request->email]);
         }
-        elseif($request->type == 'supporter')
+        elseif($request->type == 'instructor')
         {
-            return redirect()->route('supporter.login',['password'=> $request->password, 'email'=>$request->email]);
+            return redirect()->route('instructor.login',['password'=> $request->password, 'email'=>$request->email]);
         }
-        elseif($request->type == 'vendor')
+        elseif($request->type == 'student')
         {
             // return 'vendor';
-            return redirect()->route('vendor.login',['password'=> $request->password, 'email'=>$request->email]);
+            return redirect()->route('student.login',['password'=> $request->password, 'email'=>$request->email]);
         }
         return 'sad';
     }

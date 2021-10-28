@@ -49,6 +49,11 @@ return [
             'provider' => 'instructors',
         ],
 
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -88,6 +93,11 @@ return [
             'model' => App\Models\Instructor::class,
         ],
 
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -124,6 +134,12 @@ return [
         ],
         'instructors' => [
             'provider' => 'instructors',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'students' => [
+            'provider' => 'students',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

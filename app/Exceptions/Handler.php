@@ -43,9 +43,9 @@ class Handler extends ExceptionHandler
             return redirect()->guest(route('login'));
         }
 
-        // if ($request->is('vendor') || $request->is('vendor/*')) {
-        //     return redirect()->guest(route('login'));
-        // }
+        if ($request->is('student') || $request->is('student/*')) {
+            return redirect()->guest(route('login'));
+        }
 
         if ($request->is('web') || $request->is('user/*')) {
             return redirect()->guest(route('login'));
