@@ -53,7 +53,7 @@
                 </button>
 
                 <div class="d-none d-sm-block ml-2">
-                    <h4 class="page-title">نظام تقيم</h4>
+                    <h4 class="page-title"></h4>
                 </div>
             </div>
 

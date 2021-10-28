@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Lesson;
-use App\Models\Lesson as LessonAlias;
+use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
-class LessonController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,9 @@ class LessonController extends Controller
     public function index($id)
     {
         $subject = Subject::find($id);
-        $admins  = Lesson::where('section_id',$id)->get();
-        return view('admin.lessons.index',compact('subject','id','admins'));
+        $admins  = Section::where('subject_id',$id)->get();
+        return view('admin.sections.index',compact('subject','id','admins'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +27,7 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -40,7 +38,10 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Section::create(
+            $request->all()
+        );
+        return redirect()->back();
     }
 
     /**
@@ -51,7 +52,7 @@ class LessonController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -62,7 +63,8 @@ class LessonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Section::find($id);
+        return view('admin.sections.edit',compact('subject'));
     }
 
     /**
@@ -74,8 +76,15 @@ class LessonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Section::find($id);
+
+        $subject->update([
+            'name_ar'=>$request->name_ar,
+            'name_en'=>$request->name_en,
+        ]);
+        return redirect()->back()->with('message','Done Successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,6 +94,7 @@ class LessonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Section::destroy($id);
+        return redirect()->back()->with('message','Done Successfully');
     }
 }

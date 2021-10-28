@@ -82,7 +82,6 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-
         $subject = Subject::find($id);
         return view('admin.subjects.edit',compact('subject'));
     }
@@ -103,7 +102,7 @@ class SubjectController extends Controller
             $media_id = $subject->media_id;
         }
 
-        Subject::update([
+        $subject->update([
             'title_ar'=>$request->title_ar,
             'title_en'=>$request->title_en,
             'description_ar'=>$request->description_ar,

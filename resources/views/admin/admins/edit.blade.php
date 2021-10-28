@@ -19,27 +19,27 @@
                     <strong>{{ $message }}</strong>
                 </div>
                 @endif
-                <h5 class="mb-5 mt-3">تعديل مسؤول {{$admin->name}}</h5>
+                <h5 class="mb-5 mt-3">تعديل مسؤول {{$subject->name}}</h5>
 
-                <form method="post" action="{{route('admins.update',['admin'=>$admin->id])}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.subjects.update',['subject'=>$subject->id])}}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-2 col-form-label">الاسم</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" id="example-text-input" value="{{$admin->name}}" name="name">
+                            <input class="form-control" type="text" id="example-text-input" value="{{$subject->name}}" name="name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-2 col-form-label">البريد الالكتروني</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="email" id="example-text-input" value="{{$admin->email}}" name="email">
+                            <input class="form-control" type="email" id="example-text-input" value="{{$subject->email}}" name="email">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-2 col-form-label">كلمة المرور</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="password" id="example-text-input" value="{{$admin->password}}" name="password">
+                            <input class="form-control" type="password" id="example-text-input" value="{{$subject->password}}" name="password">
                         </div>
                     </div>
 
