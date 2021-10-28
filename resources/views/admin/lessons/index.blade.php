@@ -17,38 +17,44 @@
             <div class="card">
                 <div class="card-body">
                     @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
                     @endif
                     @if ($message = Session::get('error'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
+                        <div class="alert alert-danger alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
                     @endif
-                            <h4 class="">المواد الدراسية</h4>
+                        <center>
+                            <a href="{{route('admin.subjects.create')}}" class="col-sm-2 col-form-label btn  btn-dark">اضافة درس جديد </a>
+                        </center>
 
                         <hr>
 
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <h4 class="">الدروس الحالية</h4>
 
-                        <thead>
-                        <tr>
-                            <th>الصورة</th>
-                            <th>الاسم بالعربيه</th>
-                            <th>الاسم بالانجليزية</th>
-                            <th>التفاصيل بالعربية</th>
-                            <th>التفاصيل بالانجليزية</th>
-                            <th>التقييم</th>
-                            <th>السعر</th>
-                            <th>الدروس والاقسام</th>
-                            <th>التحكم</th>
-                        </tr>
-                        </thead>
-                        <?php $counter =1; ?>
-                        <tbody>
+                        <hr>
+
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+                            <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>الاسم بالعربيه</th>
+                                <th>الاسم بالانجليزية</th>
+                                <th>التفاصيل بالعربية</th>
+                                <th>التفاصيل بالانجليزية</th>
+                                <th>القسم</th>
+                                <th>اسئلة</th>
+                                <th>امتحانات</th>
+                                <th>التحكم</th>
+                            </tr>
+                            </thead>
+                            <?php $counter =1; ?>
+                            <tbody>
                             @foreach($admins as $admin)
                                 <tr>
                                     <td>
@@ -90,7 +96,7 @@
                                         {{$admin->price}}
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.sections.index',['id'=>$admin->id]) }}" class="btn btn-dark">عرض</a>
+                                        <a href="{{route('admin.lessons.index',['id'=>$admin->id]) }}" class="btn btn-dark">عرض</a>
                                     </td>
                                     <td>
                                         <center>
@@ -114,8 +120,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+
 
                 </div>
             </div>
@@ -126,24 +133,24 @@
 <!-- Modal -->
 @foreach($admins as $admin)
     <div class="modal fade" id="exampleModalCenterarAr{{$admin->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {{$admin->description_ar}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{$admin->description_ar}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <div class="modal fade" id="exampleModalCenterarEn{{$admin->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -166,17 +173,17 @@
 
 @endforeach
 @section("script")
-<script src="{{asset("assets/admin/libs/datatables.net/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-buttons/js/dataTables.buttons.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/jszip/jszip.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/pdfmake/build/pdfmake.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/pdfmake/build/vfs_fonts.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.html5.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.print.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.colVis.min.j")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js")}}"></script>
-<script src="{{asset("assets/admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js")}}"></script>
-<script src="{{asset("assets/admin/js/pages/datatables.init.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-buttons/js/dataTables.buttons.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/jszip/jszip.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/pdfmake/build/pdfmake.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/pdfmake/build/vfs_fonts.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.html5.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.print.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-buttons/js/buttons.colVis.min.j")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js")}}"></script>
+    <script src="{{asset("assets/admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/admin/js/pages/datatables.init.js")}}"></script>
 @endsection

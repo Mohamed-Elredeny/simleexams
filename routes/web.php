@@ -28,7 +28,6 @@ Route::get('rand',function (){
     return $rand1[$rand];
 });
 
-
     Auth::routes();
     Route::get('/login', function () {
         return view('Site.login');
@@ -41,3 +40,16 @@ Route::get('rand',function (){
 
     Route::get('/studentRegister', 'Auth\StudentRegisterController@showRegisterForm')->name('student.register');
     Route::post('/studentRegister', 'Auth\StudentRegisterController@register')->name('student.register.submit');
+=======
+Auth::routes();
+// Route::get('/', function () {
+//     return view('login');
+// })->name('login');
+Route::any('/checkAuthLogin', 'HomeController@checkAuthLogin')->name('check.auth.login');
+
+Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::any('/supporterLogin/{password}/{email}', 'Auth\SupporterLoginController@login')->name('supporter.login');
+Route::any('/vendorLogin/{password}/{email}', 'Auth\VendorLoginController@login')->name('vendor.login');
+
+Route::get('/vendorRegister', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
+Route::post('/vendorRegister', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
