@@ -16,10 +16,12 @@ class CreateInstructorsTable extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('degree');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image');
+            $table->bigInteger('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media');
             $table->rememberToken();
             $table->timestamps();
         });

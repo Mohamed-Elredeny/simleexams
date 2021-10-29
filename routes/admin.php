@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.home');
-});
+})->name('dashboard');
 
 Route::resource('instructors','InstructorController');
+Route::get('/delete/instructor/{instructor}/{subject}','InstructorController@deleteSubject')->name('instructor.subject.delete');
+
+
 Route::resource('students','StudentController');
 Route::resource('subjects','SubjectController');
 
@@ -32,3 +35,4 @@ Route::get('subject/lessons/{id}','LessonController@index')->name('lessons.index
 
 Route::resource('questions','QuestionController');
 Route::resource('exams','ExamController');
+

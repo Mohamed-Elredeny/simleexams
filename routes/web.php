@@ -28,15 +28,15 @@ Route::get('rand',function (){
     return $rand1[$rand];
 });
 
-    Auth::routes();
-    Route::get('/login', function () {
-        return view('Site.login');
-    })->name('login');
-    Route::any('/checkAuthLogin', 'HomeController@checkAuthLogin')->name('check.auth.login');
+Auth::routes();
+Route::get('/login', function () {
+    return view('Site.login');
+})->name('login');
+Route::any('/checkAuthLogin', 'HomeController@checkAuthLogin')->name('check.auth.login');
 
-    Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')->name('admin.login');
-    Route::any('/instructorLogin/{password}/{email}', 'Auth\InstructorLoginController@login')->name('instructor.login');
-    Route::any('/studentLogin/{password}/{email}', 'Auth\StudentLoginController@login')->name('student.login');
+Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::any('/instructorLogin/{password}/{email}', 'Auth\InstructorLoginController@login')->name('instructor.login');
+Route::any('/studentLogin/{password}/{email}', 'Auth\StudentLoginController@login')->name('student.login');
 
-    Route::get('/studentRegister', 'Auth\StudentRegisterController@showRegisterForm')->name('student.register');
-    Route::post('/studentRegister', 'Auth\StudentRegisterController@register')->name('student.register.submit');
+Route::get('/studentRegister', 'Auth\StudentRegisterController@showRegisterForm')->name('student.register');
+Route::post('/studentRegister', 'Auth\StudentRegisterController@register')->name('student.register.submit');

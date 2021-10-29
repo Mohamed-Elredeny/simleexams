@@ -11,6 +11,10 @@ class Student extends Authenticatable
     protected $guard = 'student';
     
     protected $fillable = [
-        'name', 'email', 'password', 'image', 'phone'
+        'name', 'email', 'password', 'media_id', 'phone'
     ];
+
+    public function media(){
+        return $this->belongsTo(Media::class,'media_id');
+    }
 }
