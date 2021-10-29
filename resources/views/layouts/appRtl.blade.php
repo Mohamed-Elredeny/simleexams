@@ -29,70 +29,61 @@
     <header id="rs-header" class="rs-header">
 
         <!-- Menu Start -->
-        <div class="menu-area menu-sticky">
+        <div class="menu-area menu-sticky" dir="rtl">
             <div class="container">
                 <div class="main-menu">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <!-- <div id="logo-sticky" class="text-center">
-                                <a href="index.html"><img src="images/logo.png" alt="logo"></a>
-                            </div> -->
-                            <a class="rs-menu-toggle"><i class="fa fa-bars"></i>Menu</a>
-                            <nav class="rs-menu">
-                                <ul class="nav-menu">
+                    <div class="row"> 
+                        <div class="col-sm-12" > 
+                            <a class="rs-menu-toggle"><i class="fa fa-bars"></i>القائمة</a>
+                            <nav class="rs-menu " style="float: right">
+                                <ul class="nav-menu text-right">
+                                    <li class="current-menu-item current_page_item menu-item-has-children">
+                                        <div class="right-bar-icon rs-offcanvas-link text-right">
+                                            <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal" href="#"><i class="fa fa-search"></i></a>
+                    
+                                            <a id="nav-expander" class="nav-expander fixed"><i class="fa fa-bars fa-lg white"></i></a>
+                                        </div>
+                                    
+                                    </li>
                                     <!-- Home -->
-                                    <li class="current-menu-item current_page_item menu-item-has-children"> <a href="index.html" class="home">Home</a>
+                                    <li class="current-menu-item current_page_item menu-item-has-children"> <a href="index.html" class="home">الرئيسية</a>
                                     </li>
                                     <!-- End Home -->
 
-                                    <!--About Menu Start-->
-                                    <li class="menu-item-has-children"> <a href="about.html">About Us</a>
-                                        <ul class="sub-menu">
-
-                                        </ul>
-                                    </li>
-                                    <!--About Menu End-->
-
-
-
                                     <!--Courses Menu Start-->
-                                    <li class="menu-item-has-children"> <a href="#">Subjects</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="courses.html">All Subject </a></li>
-                                            <li><a href="courses.html">Subject One</a></li>
-                                            <li><a href="courses2.html">Subject Two</a></li>
-                                            <li><a href="courses-details.html">Subject Details</a></li>
-                                            <li><a href="courses-details2.html">Subject Details 2</a></li>
-                                        </ul>
+                                    <li class="menu-item-has-children"> <a href="#">المواد</a>
+                                        
                                     </li>
                                     <!--Courses Menu End-->
 
-                                    <li>
-                                        <a href="gallery3.html">Gallery</a>
+                                    <li class="menu-item-has-children">
+                                        <a href="gallery3.html">الاساتذة</a>
                                     </li>
                                     <!--Events Menu End-->
 
 
 
                                     <!--blog Menu Start-->
-                                    <li class="menu-item-has-children"> <a href="blog.html">Blog</a>
-                                        <ul class="sub-menu">
-                                        </ul>
+                                    <li class="menu-item-has-children"> <a href="blog.html">مقالات</a>
+                                        
                                     </li>
                                     <!--blog Menu End-->
 
                                     <!--Contact Menu Start-->
-                                    <li> <a href="contact.html">Contact</a></li>
+                                    <li class="menu-item-has-children"> <a href="contact.html">تواصل معنا</a></li>
                                     <!--Contact Menu End-->
-                                </ul>
-                            </nav>
-                            <div class="right-bar-icon rs-offcanvas-link text-right">
-                                <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal" href="#"><i class="fa fa-search"></i></a>
 
-                                <a id="nav-expander" class="nav-expander fixed"><i class="fa fa-bars fa-lg white"></i></a>
-                            </div>
-                        </div>
+                                    <!--About Menu Start-->
+                                    <li class="menu-item-has-children mr-4"> <a href="about.html">من نحن</a>
+                                    </li>
+                                    <!--About Menu End-->
+                                </ul>
+                                
+                            </nav>
+                            
+                        </div> 
                     </div>
+                    
                 </div>
             </div>
         </div>
