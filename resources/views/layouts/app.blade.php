@@ -408,5 +408,51 @@
 </div>
 <!-- Search Modal End -->
 @include('includes.scripts')
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCpBSy53Yt0En9WHNAKtreNA1mL1RRBHxg",
+        authDomain: "laravelfcm-bfe4f.firebaseapp.com",
+        projectId: "laravelfcm-bfe4f",
+        storageBucket: "laravelfcm-bfe4f.appspot.com",
+        messagingSenderId: "918904671107",
+        appId: "1:918904671107:web:9ba34b41c22b2ae3dc84b6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+
+    function initFirebaseMessagingRegistration() {
+        messaging.requestPermission().then(function () {
+            return messaging.getToken()
+        }).then(function(token) {
+
+            axios.post("{{ route('fcmToken') }}",{
+                _method:"PATCH",
+                token
+            }).then(({data})=>{
+                console.log(data)
+            }).catch(({response:{data}})=>{
+                console.error(data)
+            })
+
+        }).catch(function (err) {
+            console.log(`Token Error :: ${err}`);
+        });
+    }
+
+    initFirebaseMessagingRegistration();
+
+    messaging.onMessage(function({data:{body,title}}){
+        new Notification(title, {body});
+    });
+</script>
 </body>
 </html>

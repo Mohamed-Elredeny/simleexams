@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FcmController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    return 'Cache is cleared';
+});
 Route::get('/', function () {return view('Site.index');})->name('home');
 Route::get('/subject', function () {return view('Site.subject');})->name('subject');
 Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson');
@@ -40,3 +47,12 @@ Route::any('/vendorLogin/{password}/{email}', 'Auth\VendorLoginController@login'
 
 Route::get('/vendorRegister', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
 Route::post('/vendorRegister', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
+
+Route::get('/yalabina',function () {
+    return view('Site.test');
+});
+
+
+Route::get('/home', [FcmController::class, 'index'])->name('tesssssssssssst');
+Route::patch('/fcm-token', [FcmController::class, 'updateToken'])->name('fcmToken');
+Route::post('/send-notification',[FcmController::class,'notification'])->name('notification');

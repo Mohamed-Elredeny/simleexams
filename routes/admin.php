@@ -28,7 +28,12 @@ Route::get('subject/sections/{id}','SectionController@index')->name('sections.in
 
 Route::resource('lessons','LessonController');
 Route::get('subject/lessons/{id}','LessonController@index')->name('lessons.index');
+Route::get('subject/lessons/create/{id}','LessonController@create')->name('lessons.create');
 
 
 Route::resource('questions','QuestionController');
+Route::get('subject/questions/{id}','QuestionController@index')->name('questions.index');
+Route::get('subject/questions/create/{id}','QuestionController@create')->name('questions.create');
+Route::get('subject/questions/delete/{id}/{model_type}/{model_id}','QuestionController@deleteImage')->name('question.deleteImage');
+
 Route::resource('exams','ExamController');

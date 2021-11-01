@@ -18,7 +18,7 @@
                     </div>
                     @endif
                     <h5 class="mb-5 mt-3">اضافة درس جديد</h5>
-                    <form method="post" action="{{route('admin.subjects.store')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('admin.lessons.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -47,13 +47,7 @@
                                 <textarea class="form-control" type="text" id="example-text-input" name="description_en" required></textarea>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label"> السعر</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" id="example-text-input" name="price" required>
-                            </div>
-                        </div>
+                        <input type="hidden" name="section_id" value="{{$id}}">
 
 
                         <div class="form-group row">
@@ -78,4 +72,5 @@
 @section("script")
 <script src="{{asset("assets/admin/libs/tinymce/tinymce.min.js")}}"></script>
 <script src="{{asset("assets/admin/js/pages/form-editor.init.js")}}"></script>
+
 @endsection

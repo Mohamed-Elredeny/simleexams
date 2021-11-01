@@ -15,9 +15,8 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-
-            $table->text('title_ar');
-            $table->text('title_en');
+            $table->text('body');
+            $table->integer('number');
 
             $table->bigInteger('media_id')->unsigned();
             $table->foreign('media_id')->references('id')->on('media');
@@ -25,8 +24,14 @@ class CreateQuestionsTable extends Migration
             $table->string('answers');
             $table->string('right_answer');
 
+            $table->integer('question_bank');
+
             $table->bigInteger('hint_id')->unsigned();
             $table->foreign('hint_id')->references('id')->on('hints');
+
+
+            $table->bigInteger('lesson')->unsigned();
+            $table->foreign('lesson')->references('id')->on('lessons');
 
             $table->timestamps();
         });

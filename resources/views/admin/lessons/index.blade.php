@@ -47,7 +47,6 @@
                                 <th>الاسم بالانجليزية</th>
                                 <th>التفاصيل بالعربية</th>
                                 <th>التفاصيل بالانجليزية</th>
-                                <th>القسم</th>
                                 <th>اسئلة</th>
                                 <th>امتحانات</th>
                                 <th>التحكم</th>
@@ -58,7 +57,7 @@
                             @foreach($admins as $admin)
                                 <tr>
                                     <td>
-                                        <img src="{{asset('assets/images/subjects/'.$admin->media->file)}}" alt="" style="height:100px;width:100px">
+                                        <img src="{{asset('assets/images/lessons/'.$admin->media->file)}}" alt="" style="height:100px;width:100px">
 
                                     </td>
                                     <td>
@@ -78,22 +77,12 @@
                                         </button>
                                     </td>
 
-                                    <td>
-                                        <center>
-                                            <div class="ratings">
-                                                <?php   $remind = 5 - intval($admin->rate); ?>
-                                                @for($i=0;$i<intval($admin->rate);$i++)
-                                                    <i class="fa fa-star star-fill"></i>
-                                                @endfor
-                                                @for($i=0;$i<$remind;$i++)
-                                                    <i class="fa fa-star"></i>
-                                                @endfor
-                                            </div>
-                                        </center>
-                                    </td>
+
 
                                     <td>
-                                        {{$admin->price}}
+                                        <a class="btn btn-dark" href="{{route('admin.questions.index',['id'=>$admin->id])}}">
+                                            عرض
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="{{route('admin.lessons.index',['id'=>$admin->id]) }}" class="btn btn-dark">عرض</a>

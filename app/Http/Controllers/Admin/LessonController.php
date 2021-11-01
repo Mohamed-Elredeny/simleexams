@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use App\Models\Lesson as LessonAlias;
+use App\Models\Media;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,9 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('admin.lessons.create',compact('id'));
     }
 
     /**
@@ -38,9 +39,27 @@ class LessonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function media(Request $request,$type,$table){
+        $fileName = $request->media_id->getClientOriginalName();
+        $file_to_store = time() . '_' . $fileName ;
+        $request->media_id->move(public_path('assets/images/'.$table.'/'), $file_to_store);
+        $media = Media::create([
+            'type'=>$type,
+            'table_name'=>$table,
+            'file'=>$file_to_store
+        ]);
+        return $media->id;
+    }
     public function store(Request $request)
     {
-        //
+        Lesson::create([
+            'title_ar'=>$request->title_ar,
+            'title_en'=>$request->title_en,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'media_id'=> $this->media($request,'image','lessons'),
+            'section_id'=>$request->section_id
+        ]);
     }
 
     /**
