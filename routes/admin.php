@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.home');
-});
+})->name('dashboard');
 
 Route::resource('instructors','InstructorController');
+Route::get('/delete/instructor/{instructor}/{subject}','InstructorController@deleteSubject')->name('instructor.subject.delete');
+
+
 Route::resource('students','StudentController');
 Route::resource('subjects','SubjectController');
 
@@ -37,3 +40,4 @@ Route::get('subject/questions/create/{id}','QuestionController@create')->name('q
 Route::get('subject/questions/delete/{id}/{model_type}/{model_id}','QuestionController@deleteImage')->name('question.deleteImage');
 
 Route::resource('exams','ExamController');
+

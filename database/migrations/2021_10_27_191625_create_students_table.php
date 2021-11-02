@@ -17,9 +17,11 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image');
+            $table->bigInteger('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media');
             $table->rememberToken();
             $table->timestamps();
         });

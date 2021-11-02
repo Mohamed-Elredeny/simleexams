@@ -19,9 +19,9 @@ class RedirectIfAuthenticated
             return redirect()->route('instructor.dashboard');
         }
 
-        // if ($guard == "vendor" && Auth::guard($guard)->check()) {
-        //     return redirect()->route('vendor.dashboard');
-        // }
+        if ($guard == "student" && Auth::guard($guard)->check()) {
+            return redirect()->route('student.dashboard');
+        }
 
         if (Auth::guard($guard)->check()) {
             return redirect()->route('home');
