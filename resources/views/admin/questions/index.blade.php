@@ -33,9 +33,9 @@
                             <div class="col-sm-6">
                                 <a href="{{route('admin.questions.create',['id'=>$id])}}" class="col-sm-6 col-form-label btn  btn-dark">اضافة سوال جديد </a>
                             </div>
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <a href="{{route('admin.questions.create',['id'=>$id])}}" class="col-sm-6 col-form-label btn  btn-dark">استيراد    من excel </a>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </center>

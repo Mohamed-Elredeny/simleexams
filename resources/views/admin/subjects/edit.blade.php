@@ -64,7 +64,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">الصورة</label>
                             <div class="col-sm-10">
                                 <img src="{{asset('assets/images/subjects/'.$subject->image)}}" alt="">
-                                <input class="form-control" type="text" id="example-text-input" value="{{$subject->price}}" name="price">
+                                <input class="form-control" type="file" id="example-text-input" value="{{$subject->image}}" name="image">
                             </div>
                         </div>
 

@@ -15,7 +15,7 @@ class Question extends Model
 		'right_answer',
         'question_bank',
 		'hint_id',
-        'lesson'
+        'section'
     ];
     public function hint(){
         return $this->belongsTo(Hint::class,'hint_id');

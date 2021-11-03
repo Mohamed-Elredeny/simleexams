@@ -17,7 +17,7 @@ class CreateHintsTable extends Migration
             $table->id();
 
             $table->text('description');
-
+            
             $table->bigInteger('media_id')->unsigned();
             $table->foreign('media_id')->references('id')->on('media');
 

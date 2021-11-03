@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instructor;
+use App\Models\Question;
+use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Subset;
 
 class HomeController extends Controller
 {
@@ -14,7 +19,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin');
+        $students = Student::count();
+        $instructors = Instructor::count();
+        $supjects = Subject::count();
+        $Questions = Question::count();
+        return view('admin.home',compact('students','instructors','supjects','Questions'));
     }
 
     /**

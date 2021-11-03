@@ -22,7 +22,7 @@
                     <form method="post" action="{{route('admin.questions.update',['question'=>$id])}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <input type="hidden" name="lesson" value="{{$question->lesson}}">
+                        <input type="hidden" name="section" value="{{$question->section}}">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> رقم السوال </label>
                             <div class="col-sm-10">

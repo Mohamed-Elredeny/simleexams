@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +64,7 @@ class SubjectController extends Controller
             'tag_id'=>$request->tag_id,
             'media_id'=> $this->media($request,'image','subjects')
         ]);
-        return redirect()->back()->with('message','Done Successfully');
+        return redirect()->back()->with('success','Done Successfully');
     }
 
     /**
@@ -111,7 +116,7 @@ class SubjectController extends Controller
             'tag_id'=>$request->tag_id,
             'media_id'=> $media_id
         ]);
-        return redirect()->back()->with('message','Done Successfully');
+        return redirect()->back()->with('success','Done Successfully');
     }
 
     /**

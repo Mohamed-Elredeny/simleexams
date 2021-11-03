@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('admin.home');
-})->name('dashboard');
+Route::get('/','HomeController@index')->name('dashboard');
 
 Route::resource('instructors','InstructorController');
 Route::get('/delete/instructor/{instructor}/{subject}','InstructorController@deleteSubject')->name('instructor.subject.delete');

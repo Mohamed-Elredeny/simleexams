@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -82,7 +87,7 @@ class SectionController extends Controller
             'name_ar'=>$request->name_ar,
             'name_en'=>$request->name_en,
         ]);
-        return redirect()->back()->with('message','Done Successfully');
+        return redirect()->back()->with('success','Done Successfully');
     }
 
 

@@ -53,7 +53,6 @@ Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')-
 Route::any('/instructorLogin/{password}/{email}', 'Auth\InstructorLoginController@login')->name('instructor.login');
 Route::any('/studentLogin/{password}/{email}', 'Auth\StudentLoginController@login')->name('student.login');
 
-<<<<<<< HEAD
 Route::get('/vendorRegister', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
 Route::post('/vendorRegister', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
 
@@ -65,7 +64,8 @@ Route::get('/yalabina',function () {
 Route::get('/home', [FcmController::class, 'index'])->name('tesssssssssssst');
 Route::patch('/fcm-token', [FcmController::class, 'updateToken'])->name('fcmToken');
 Route::post('/send-notification',[FcmController::class,'notification'])->name('notification');
-=======
+
+
 Route::get('/studentRegister', 'Auth\StudentRegisterController@showRegisterForm')->name('student.register');
 Route::post('/studentRegister', 'Auth\StudentRegisterController@register')->name('student.register.submit');
->>>>>>> 51429c6e90394d81f507abe4c18e528f7e79259f
+

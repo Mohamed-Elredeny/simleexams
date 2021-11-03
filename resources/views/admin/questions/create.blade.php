@@ -21,7 +21,7 @@
 
                     <form method="post" action="{{route('admin.questions.store')}}" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="lesson" value="{{$id}}">
+                        <input type="hidden" name="section" value="{{$id}}">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"> رقم السوال </label>
                             <div class="col-sm-10">

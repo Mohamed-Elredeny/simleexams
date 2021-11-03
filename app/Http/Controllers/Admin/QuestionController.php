@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,7 @@ class QuestionController extends Controller
      */
     public function index($id)
     {
-        $admins = Question::where('lesson',$id)->get();
+        $admins = Question::where('section',$id)->get();
         return view('admin.questions.index',compact('id','admins'));
     }
 
@@ -92,10 +97,11 @@ class QuestionController extends Controller
 		    'right_answer'=>$right_answer,
 		    'question_bank'=>$question_bank,
 		    'hint_id'=>$hint,
-            'lesson'=>$request->lesson
+            'section'=>$request->section
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','تم ااضافة السؤال بنجاح');
     }
+
     public function media(Request $request,$type,$table){
         $fileName = $request->media_id->getClientOriginalName();
         $file_to_store = time() . '_' . $fileName ;
@@ -107,6 +113,7 @@ class QuestionController extends Controller
         ]);
         return $media->id;
     }
+
     public function hint_media_id(Request $request,$type,$table){
         $fileName = $request->hint_media_id->getClientOriginalName();
         $file_to_store = time() . '_' . $fileName ;
@@ -238,9 +245,9 @@ class QuestionController extends Controller
             'right_answer'=>$right_answer,
             'question_bank'=>$question_bank,
             'hint_id'=>$hint,
-            'lesson'=>$request->lesson
+            'section'=>$request->section
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','تم التعديل بنجاح');
     }
 
     /**
