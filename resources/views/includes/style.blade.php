@@ -23,7 +23,11 @@
 <!-- rsmenu transitions CSS -->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/site/css/rsmenu-transitions.css')}}">
 <!-- style css -->
+@if (LaravelLocalization::getCurrentLocale() =='en')
+<link rel="stylesheet" type="text/css" href="{{asset('assets/site/css/style.css')}}">
+    @else
 <link rel="stylesheet" type="text/css" href="{{asset('assets/site/css/style-rtl.css')}}">
+@endif
 <!-- responsive css -->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/site/css/responsive.css')}}">
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

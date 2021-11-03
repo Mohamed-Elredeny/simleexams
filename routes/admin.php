@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@index')->name('dashboard');
 
+Route::resource('blogs','BlogController');
+
 Route::resource('instructors','InstructorController');
 Route::get('/delete/instructor/{instructor}/{subject}','InstructorController@deleteSubject')->name('instructor.subject.delete');
 
