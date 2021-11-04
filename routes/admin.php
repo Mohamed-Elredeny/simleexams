@@ -41,3 +41,5 @@ Route::get('subject/questions/delete/{id}/{model_type}/{model_id}','QuestionCont
 
 Route::resource('exams','ExamController');
 
+Route::resource('examQuestions','ExamQuestionsController');
+Route::get('exam/questions/{id}','ExamQuestionsController@index')->name('examQuestions.index');

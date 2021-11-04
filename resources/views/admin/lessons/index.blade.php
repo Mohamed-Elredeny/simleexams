@@ -61,10 +61,10 @@
 
                                     </td>
                                     <td>
-                                        {{$admin->title_ar}}
+                                        {{$admin->name_ar}}
                                     </td>
                                     <td>
-                                        {{$admin->title_en}}
+                                        {{$admin->name_en}}
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenterarAr{{$admin->id}}">

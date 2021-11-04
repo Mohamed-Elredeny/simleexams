@@ -20,4 +20,7 @@ class Subject extends Model
     public function media(){
         return $this->belongsTo(Media::class,'media_id');
     }
+    public function sections(){
+        return $this->hasMany(Section::class,'subject_id');
+    }
 }

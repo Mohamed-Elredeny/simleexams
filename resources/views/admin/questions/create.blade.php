@@ -17,6 +17,7 @@
                             <strong>{{ $message }}</strong>
                         </div>
                     @endif
+
                     <h5 class="mb-5 mt-3">اضافة سوال جديد</h5>
 
                     <form method="post" action="{{route('admin.questions.store')}}" enctype="multipart/form-data">
