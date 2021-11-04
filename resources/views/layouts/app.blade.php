@@ -41,9 +41,9 @@
                                 <nav class="rs-menu">
                                     <ul class="nav-menu">
                                         <!-- Home -->
-                                        <li class="current-menu-item current_page_item "> <a href="index.html" class="home">Home</a></li>
-                                        <li> <a href="#">Subjects</a> </li>
-                                        <li> <a href="gallery3.html">Instructors</a> </li> 
+                                        <li class="current-menu-item current_page_item "> <a href="{{ route('home') }}" class="home">Home</a></li>
+                                        <li> <a href="{{ route('allSubjects') }}">Subjects</a> </li>
+                                        <li> <a href="{{ route('allInstructors') }}">Instructors</a> </li> 
                                         <li> <a href="blog.html">Blogs</a> 
                                         <li> <a href="contact.html">Contact</a></li>
                                         <li> <a href="about.html">About Us</a> </li>
@@ -83,9 +83,9 @@
                                         
                                         </li>
                                         <!-- Home -->
-                                        <li class="current-menu-item current_page_item right-bar-icon"> <a href="index.html" class="home">الرئيسية</a> </li>
-                                        <li class="right-bar-icon"> <a href="#">المواد</a> </li>
-                                        <li class="right-bar-icon"> <a href="gallery3.html">الاساتذة</a> </li>
+                                        <li class="current-menu-item current_page_item right-bar-icon"> <a href="{{ route('home') }}" class="home">الرئيسية</a> </li>
+                                        <li class="right-bar-icon"> <a href="{{ route('allSubjects') }}">المواد</a> </li>
+                                        <li class="right-bar-icon"> <a href="{{ route('allInstructors') }}">الاساتذة</a> </li>
                                         <li class="right-bar-icon"> <a href="blog.html">مقالات</a> </li>
                                         <li class="right-bar-icon"> <a href="contact.html">تواصل</a></li>
                                         <li class="right-bar-icon"> <a href="about.html">من نحن</a> </li>
@@ -199,45 +199,23 @@
                                         aria-hidden="true"></i>Home</a></li>
                             <li><a href="about.html"><i class="fa fa-angle-right" aria-hidden="true"></i>About</a></li>
                             <li><a href="courses.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Courses</a>
-                            </li>
-                            <li><a href="courses-details.html"><i class="fa fa-angle-right"
-                                        aria-hidden="true"></i>Courses Details</a></li>
-                            <li><a href="events.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Events</a>
-                            </li>
-                            <li><a href="events-details.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Events
-                                    Details</a></li>
+                            </li> 
                             <li><a href="blog.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog</a></li>
-                            <li><a href="blog-details.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog
-                                    Details</a></li>
-                            <li><a href="teachers.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Teachers</a>
-                            </li>
-                            <li><a href="teachers-single.html"><i class="fa fa-angle-right"
-                                        aria-hidden="true"></i>Teachers Details</a></li>
+                             
+                            <li><a href="teachers.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Instructors</a>
+                            </li> 
                             <li><a href="contact.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a>
-                            </li>
-                            <li><a href="error-404.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Error
-                                    404</a></li>
+                            </li> 
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-12">
                         <h5 class="footer-title">NEWSLETTER</h5>
                         <p>Sign Up to Our Newsletter to Get Latest Updates &amp; Services</p>
-                        <form class="news-form">
-                            <input type="text" class="form-input" placeholder="Enter Your Email">
-                            <button type="submit" class="form-button"><i class="fa fa-arrow-right"
-                                    aria-hidden="true"></i></button>
-                        </form>
+                        <div style=" background-color: #ff3115; margin: 5px; padding: 5px; width: 50%;">
+                            <a href="#" style="color: white !important" >Join Us</a>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-share">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                    </ul>
-                </div>
+                </div> 
             </div>
         </div>
 
@@ -262,7 +240,7 @@
         <div class="close-btn"><span id="nav-close" class="text-center">x</span></div>
         <div class="canvas-logo">
             <a href="index.html"><img src="{{ asset('assets/site/images/logo-white.png') }}" alt="logo"></a>
-        </div>
+        </div> 
         <ul class="sidebarnav_menu list-unstyled main-menu">
             <!--Home Menu Start-->
             <li class="current-menu-item menu-item-has-children"><a href="#">Home</a>

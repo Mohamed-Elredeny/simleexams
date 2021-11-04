@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function index()
     {
         $blogs = Blog::get();
@@ -32,40 +37,29 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $rules = [
-            'title' => 'required',
-            'writer' => 'required',
-            'description' => 'required',
-        ];
+    {  
+        $title_ar = $request->title_ar;
+        $title_en = $request->title_en;
+        $description_ar = $request->description_ar;
+        $description_en = $request->description_en;
 
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInputs($request->all());
-        } else {
-            $title_ar = $request->title;
-            $title_en = $request->title;
-            $description_ar = $request->description;
-            $description_en = $request->description;
-
-            if($request->image){
-                $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('assets/images/blogs/'), $imageName);
-            }else{
-                $imageName = 'default';
-            }
-
-            Blog::create([
-                'title_ar'=> $title_ar,
-                'title_en'=> $title_en,
-                'writer'=> $request->writer,
-                'description_ar'=> htmlspecialchars($description_ar),
-                'description_en'=> htmlspecialchars($description_en),
-                'image'=> $imageName,
-            ]);
-            return redirect()->route('blogs.index')->with('success', 'The Blog has created successfully.');
+        if($request->image){
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('assets/images/blogs/'), $imageName);
+        }else{
+            $imageName = 'default';
         }
+
+        Blog::create([
+            'title_ar'=> $title_ar,
+            'title_en'=> $title_en,
+            'buplisher'=> $request->writer,
+            'description_ar'=> htmlspecialchars($description_ar),
+            'description_en'=> htmlspecialchars($description_en),
+            'image'=> $imageName,
+        ]);
+        return redirect()->route('admin.blogs.index')->with('success', 'تم الاضافة بنجاح');
+        
     }
 
     /**
@@ -102,40 +96,31 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
 
-        $currentBlog = Blog::find($id);
-        $rules = [
-            'title' => 'required',
-            'writer' => 'required',
-            'description' => 'required',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        } else {
-            $title_ar = $request->title;
-            $title_en = $request->title;
-            $description_ar = $request->description;
-            $description_en = $request->description;
+        $currentBlog = Blog::find($id); 
 
-            if ($request->image) {
-                unlink(public_path('assets/images/blogs') .'/' . $currentBlog->image);
-                $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('/assets/images/blogs/'), $imageName);
-            }
-            else{
-                $imageName = $currentBlog->image;
-            }
-            $currentBlog->update([
-                'title_ar'=> $title_ar,
-                'title_en'=> $title_en,
-                'writer'=> $request->writer,
-                'description_ar'=> htmlspecialchars($description_ar),
-                'description_en'=> htmlspecialchars($description_en),
-                'image'=> $imageName,
-            ]);
+        $title_ar = $request->title_ar;
+        $title_en = $request->title_en;
+        $description_ar = $request->description_ar;
+        $description_en = $request->description_en;
 
+        if ($request->image) {
+            unlink(public_path('assets/images/blogs') .'/' . $currentBlog->image);
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/assets/images/blogs/'), $imageName);
         }
-        return redirect()->route('blogs.index')->with('success', 'The Blog has updated successfully.');
+        else{
+            $imageName = $currentBlog->image;
+        }
+        $currentBlog->update([
+            'title_ar'=> $title_ar,
+            'title_en'=> $title_en,
+            'buplisher'=> $request->writer,
+            'description_ar'=> htmlspecialchars($description_ar),
+            'description_en'=> htmlspecialchars($description_en),
+            'image'=> $imageName,
+        ]);
+        
+        return redirect()->route('admin.blogs.index')->with('success', 'تم التعديل بنجاح');
     }
 
     /**
@@ -148,6 +133,6 @@ class BlogController extends Controller
     {
         $old = Blog::find($id);
         $old->delete();
-        return redirect()->route('blogs.index')->with('success', 'Deleted successfully');
+        return redirect()->route('blogs.index')->with('success', 'تم الحذف بنجاح');
     }
 }

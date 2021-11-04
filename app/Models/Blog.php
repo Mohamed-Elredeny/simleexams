@@ -13,5 +13,7 @@ class Blog extends Model
             'description_ar',
             'description_en',
             'buplisher', 
+            'image'
     ];
+
 }

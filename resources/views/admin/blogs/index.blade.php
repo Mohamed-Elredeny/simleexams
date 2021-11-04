@@ -34,9 +34,11 @@
 
                     <thead>
                     <tr>
-                        <th>العنوان</th>
+                        <th>العنوان بالعربية</th>
+                        <th>العنوان بالانجليزية</th>
                         <th>الكاتب</th>
-                        <th>الموضوع</th>
+                        <th>الموضوع بالعربية</th>
+                        <th>الموضوع بالانجليزية</th>
                         <th>التحكم</th>
                     </tr>
                     </thead>
@@ -45,9 +47,13 @@
                         @foreach($blogs as $bloggg)
                         <tr>
                         <th>{{$bloggg->title_ar}}</th>
-                        <th>{{$bloggg->writer}}</th>
+                        <th>{{$bloggg->title_en}}</th>
+                        <th>{{$bloggg->buplisher}}</th>
                         <th>
                             <a class="btn btn-dark col-sm-12" data-toggle="modal" data-target="#course{{$bloggg->id}}">عرض</a><br>
+                        </th>
+                        <th>
+                            <a class="btn btn-dark col-sm-12" data-toggle="modal" data-target="#course_en{{$bloggg->id}}">عرض</a><br>
                         </th>
                         <th> 
                             <center>
@@ -58,9 +64,9 @@
                                             التحكم
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="btn btn-dark col-sm-12" href="{{route('blogs.show',['blog'=>$bloggg->id])}}">عرض</a><br>
-                                            <a class="btn btn-dark col-sm-12"  href="{{route('blogs.edit',['blog'=>$bloggg->id])}}">تعديل</a>
-                                            <form method="post" action="{{route('blogs.destroy',['blog'=>$bloggg->id])}}">
+                                            <a class="btn btn-dark col-sm-12" href="{{route('admin.blogs.show',['blog'=>$bloggg->id])}}">عرض</a><br>
+                                            <a class="btn btn-dark col-sm-12"  href="{{route('admin.blogs.edit',['blog'=>$bloggg->id])}}">تعديل</a>
+                                            <form method="post" action="{{route('admin.blogs.destroy',['blog'=>$bloggg->id])}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-dark col-sm-12" >حذف</button>
@@ -91,6 +97,23 @@
         </div>
         <div class="modal-body backgroundColorSec p-5">
             <?php $x = html_entity_decode($blogg->description_ar); echo $x ?>
+            
+        </div>
+        
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="course_en{{$blogg->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="courseLabel_en{{$blogg->id}}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header  text-white" style="border:none">
+            <h5 class="modal-title" style="color: black" id="courseLabel_en{{$blogg->id}}">الموضوع</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body p-5" style="text-align: left !important">
+            <?php $x = html_entity_decode($blogg->description_en); echo $x ?>
             
         </div>
         

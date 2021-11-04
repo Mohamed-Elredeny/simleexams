@@ -20,7 +20,7 @@
                 @endif
                 <h5 class="mb-5 mt-3">تعديل {{$blog->title_ar}}</h5>
 
-                <form method="post" action="{{route('blogs.update',['blog'=>$blog->id])}}">
+                <form method="post" action="{{route('admin.blogs.update',['blog'=>$blog->id])}}">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
@@ -38,7 +38,7 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-2 col-form-label">الكاتب</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" id="example-text-input" name="writer" value="{{$blog->writer}}" required>
+                            <input class="form-control" type="text" id="example-text-input" name="writer" value="{{$blog->buplisher}}" required>
                         </div>
                     </div>
 

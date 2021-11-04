@@ -23,4 +23,10 @@ class Subject extends Model
     public function sections(){
         return $this->hasMany(Section::class,'subject_id');
     }
+    public function exams(){
+        return $this->hasMany(Exam::class,'subject_id');
+    }
+    public function students(){
+        return $this->hasMany(UserSubject::class,'subject_id');
+    }
 }

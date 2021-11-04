@@ -21,4 +21,7 @@ class Exam extends Model
     public function subject(){
         return $this->belongsTo(Subject::class,'subject_id');
     }
+    public function questions(){
+        return $this->hasMany(ExamQuestion::class,'exam_id');
+    }
 }

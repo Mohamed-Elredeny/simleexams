@@ -23,7 +23,7 @@
                 @endif
                 <h5 class="mb-5 mt-3">اضافة مقالة جديدة</h5>
 
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.blogs.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-2 col-form-label">العنوان باللغة العربية </label>
@@ -61,7 +61,7 @@
                     <div class="form-group row mt-2">
                         <label for="example-text-input" class="col-sm-2 col-form-label">الصورة</label>
                         <div class="custom-file col-sm-10">
-                            <input name="image" type="file" class="custom-file-input" id="customFileLangHTML" >
+                            <input name="image" type="file" class="custom-file-input" id="customFileLangHTML" required>
                             <label class="custom-file-label" for="customFileLangHTML" data-browse="Upload Image"></label>
                         </div>
                     </div>

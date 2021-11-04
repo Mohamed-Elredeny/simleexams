@@ -22,6 +22,8 @@ class CreateBlogsTable extends Migration
             $table->text('description_en');
 
             $table->string('buplisher');
+            $table->string('image');
+            
             $table->timestamps();
         });
     }

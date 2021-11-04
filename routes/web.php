@@ -27,19 +27,22 @@ Route::group(
         Artisan::call('cache:clear');
         return 'Cache is cleared';
     });
+
     Route::get('/', 'Site\HomeController@index')->name('home');
-    Route::get('/subject', function () {return view('Site.subject');})->name('subject');
+    Route::get('/subject/{id}', 'Site\SubjectController@index')->name('subject');
+    Route::get('/allSubject', 'Site\SubjectController@allSubjects')->name('allSubjects');
+    Route::get('/instructors', 'Site\SubjectController@allInstructors')->name('allInstructors');
+    Route::get('/blogs', 'Site\SubjectController@allBlogs')->name('blogs');
+
     Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.about');})->name('about');
-    Route::get('/blog', function () {return view('Site.blog');})->name('blog');
     Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
-    Route::get('/subject', function () {return view('Site.subjectrtl');})->name('subject');
+    // Route::get('/subject', function () {return view('Site.subject');})->name('subject');
     Route::get('/lesson', function () {return view('Site.lessonrtl');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.aboutrtl');})->name('about');
-    Route::get('/blog', function () {return view('Site.blogrtl');})->name('blog');
     Route::get('/blog/details', function () {return view('Site.blogDetailsrtl');})->name('blog.details');
 
     Route::get('rand',function (){
