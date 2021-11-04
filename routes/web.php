@@ -43,7 +43,7 @@ Route::group(
     Route::get('/lesson', function () {return view('Site.lessonrtl');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.aboutrtl');})->name('about');
-    Route::get('/blog/details', function () {return view('Site.blogDetailsrtl');})->name('blog.details');
+    Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
     Route::get('rand',function (){
     $rand = rand(0,1);
