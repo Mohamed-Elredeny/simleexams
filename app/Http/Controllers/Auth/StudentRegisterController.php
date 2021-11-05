@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
@@ -18,23 +19,37 @@ class StudentRegisterController extends Controller
     {
         return view('Site.register');
     }
-
+    public function media(Request $request,$type,$table){
+        $fileName = $request->media_id->getClientOriginalName();
+        $file_to_store = time() . '_' . $fileName ;
+        $request->media_id->move(public_path('assets/images/'.$table.'/'), $file_to_store);
+        $media = Media::create([
+            'type'=>$type,
+            'table_name'=>$table,
+            'file'=>$file_to_store
+        ]);
+        return $media->id;
+    }
     public function register(Request $request)
     {
         $this->validate($request, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:students'],
             'password' => ['required', 'string', 'min:8'],
+            'media_id'=>['required']
         ]);
 
-        $request['name'] = $request['fname'] . ' ' . $request['lname'];
-        $fileName = $request->imagee->getClientOriginalName();
-        $file_to_store = time() . '_' . $fileName ;
-        $request->imagee->move(public_path('assets/images/users'), $file_to_store);
+        $name = $request['fname'] . ' ' . $request['lname'];
 
-        $request['password'] = Hash::make($request->password);
-        $request['image'] = $file_to_store;
-        Student::create($request->all());
 
-        return redirect()->route('student.dashboard');
+        $password = Hash::make($request->password);
+        Student::create([
+            'name'=>$name,
+		    'email'=>$request->email,
+		    'phone'=>$request->phone,
+	        'password'=>$password,
+	    	'media_id'=> $this->media($request,'image','users')
+        ]);
+
+        return redirect()->route('login');
     }
 }

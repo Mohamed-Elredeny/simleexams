@@ -38,10 +38,14 @@ Route::group(
     Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.about');})->name('about');
+    Route::get('/contact', function () {return view('Site.contact');})->name('contact');
+    Route::post('/user/contact','Site\HomeController@contact')->name('site.contact');
+
 
     Route::get('/lesson', function () {return view('Site.lessonrtl');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.aboutrtl');})->name('about');
+    Route::get('/profile', function () {return view('Site.profile');})->name('profile');
 
     Route::get('rand',function (){
     $rand = rand(0,1);
@@ -53,7 +57,7 @@ Route::group(
     Route::get('/login', function () {
         return view('Site.login');
     })->name('login');
-    
+
     Route::any('/checkAuthLogin', 'HomeController@checkAuthLogin')->name('check.auth.login');
 
     Route::any('/adminLogin/{password}/{email}', 'Auth\AdminLoginController@login')->name('admin.login');

@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\Blog;
+$blogs = Blog::limit(2)->get();
+
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -36,24 +42,31 @@
                 <div class="container">
                     <div class="main-menu">
                         <div class="row">
-                            <div class="col-sm-12"> 
+                            <div class="col-sm-12">
                                 <a class="rs-menu-toggle"><i class="fa fa-bars"></i></a>
                                 <nav class="rs-menu">
                                     <ul class="nav-menu">
                                         <!-- Home -->
                                         <li class="current-menu-item current_page_item "> <a href="{{ route('home') }}" class="home">Home</a></li>
+                                        @if(auth()->user())
+                                        <li> <a href="{{ route('profile') }}">Profile</a> </li>
+                                        @endif
                                         <li> <a href="{{ route('allSubjects') }}">Subjects</a> </li>
-                                        <li> <a href="{{ route('allInstructors') }}">Instructors</a> </li> 
-                                        <li> <a href="{{ route('blogs') }}">Blogs</a> 
-                                        <li> <a href="contact.html">Contact</a></li>
-                                        <li> <a href="about.html">About Us</a> </li>
-                                        <li> <a href="{{LaravelLocalization::getLocalizedURL('ar') }}">Arabic</a> </li>
+                                        <li> <a href="{{ route('allInstructors') }}">Instructors</a> </li>
+                                        <li> <a href="{{ route('blogs') }}">Blogs</a>
+                                        <li> <a href="{{route('contact')}}">Contact</a></li>
+                                        <li> <a href="{{route('about')}}">About Us</a> </li>
+                                        @if(!auth()->user())
+                                            <li> <a href="{{ route('login') }}">login</a> </li>
+                                            <li> <a href="{{ route('student.register') }}">register</a> </li>
+                                        @endif
+                                            <li> <a href="{{LaravelLocalization::getLocalizedURL('ar') }}">Arabic</a> </li>
                                         <li> <a href="{{LaravelLocalization::getLocalizedURL('en') }}">English</a>  </li>
                                     </ul>
                                 </nav>
                                 <div class="right-bar-icon rs-offcanvas-link text-right">
                                     <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal"
-                                        href="#"><i class="fa fa-search"></i></a> 
+                                        href="#"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -69,36 +82,43 @@
             <div class="menu-area menu-sticky" dir="rtl">
                 <div class="container">
                     <div class="main-menu">
-                        <div class="row"> 
-                            <div class="col-sm-12" > 
+                        <div class="row">
+                            <div class="col-sm-12" >
                                 <a class="rs-menu-toggle"><i class="fa fa-bars"></i></a>
                                 <nav class="rs-menu " style="float: right">
                                     <ul class="nav-menu text-right">
                                         <li class="current-menu-item current_page_item ">
                                             <div class="right-bar-icon rs-offcanvas-link text-right">
                                                 <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal" href="#"><i class="fa fa-search"></i></a>
-                        
+
                                                 {{-- <a id="nav-expander" class="nav-expander fixed"><i class="fa fa-bars fa-lg white"></i></a> --}}
                                             </div>
-                                        
+
                                         </li>
                                         <!-- Home -->
                                         <li class="current-menu-item current_page_item right-bar-icon"> <a href="{{ route('home') }}" class="home">الرئيسية</a> </li>
+                                        @if(auth()->user())
+                                        <li> <a href="{{ route('profile') }}">الملف الشخصي</a> </li>
+                                        @endif
                                         <li class="right-bar-icon"> <a href="{{ route('allSubjects') }}">المواد</a> </li>
                                         <li class="right-bar-icon"> <a href="{{ route('allInstructors') }}">الاساتذة</a> </li>
                                         <li class="right-bar-icon"> <a href="{{ route('blogs') }}">مقالات</a> </li>
-                                        <li class="right-bar-icon"> <a href="contact.html">تواصل</a></li>
-                                        <li class="right-bar-icon"> <a href="about.html">من نحن</a> </li>
+                                        <li class="right-bar-icon"> <a href="{{route('contact')}}">تواصل</a></li>
+                                        <li class="right-bar-icon"> <a href="{{route('about')}}">من نحن</a> </li>
+                                        @if(!auth()->user())
+                                            <li> <a href="{{ route('login') }}">تسجيل دخول</a> </li>
+                                            <li> <a href="{{ route('student.register') }}">التسجيل</a> </li>
+                                        @endif
                                         <li class="right-bar-icon"> <a href="{{LaravelLocalization::getLocalizedURL('ar') }}">عربية</a> </li>
                                         <li class="right-bar-icon"> <a href="{{LaravelLocalization::getLocalizedURL('en') }}">English</a>  </li>
                                         <li></li>
                                     </ul>
-                                    
+
                                 </nav>
-                                
-                            </div> 
+
+                            </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -167,29 +187,19 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12">
-                        <h5 class="footer-title">RECENT POSTS</h5>
+                        <h5 class="footer-title">RECENT BLOGS</h5>
                         <div class="recent-post-widget">
+                            @foreach($blogs as $blog)
                             <div class="post-item">
                                 <div class="post-date">
-                                    <span>28</span>
-                                    <span>June</span>
+                                    <span>{{date_format($blog->created_at,'d')}}</span>
+                                    <span>{{date_format($blog->created_at,'M')}}</span>
                                 </div>
                                 <div class="post-desc">
-                                    <h5 class="post-title"><a href="#">While the lovely valley team work</a></h5>
-                                    <span class="post-category">Keyword Analysis</span>
+                                    <h5 class="post-title" id="msg"><a href="#">{{$blog['title_'.App::getlocale()]}}</a></h5>
                                 </div>
                             </div>
-                            <div class="post-item">
-                                <div class="post-date">
-                                    <span>28</span>
-                                    <span>June</span>
-                                </div>
-                                <div class="post-desc">
-                                    <h5 class="post-title"><a href="#">I must explain to you how all this idea</a>
-                                    </h5>
-                                    <span class="post-category">Spoken English</span>
-                                </div>
-                            </div>
+                                @endforeach
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12">
@@ -199,13 +209,13 @@
                                         aria-hidden="true"></i>Home</a></li>
                             <li><a href="about.html"><i class="fa fa-angle-right" aria-hidden="true"></i>About</a></li>
                             <li><a href="courses.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Courses</a>
-                            </li> 
+                            </li>
                             <li><a href="blog.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog</a></li>
-                             
+
                             <li><a href="teachers.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Instructors</a>
-                            </li> 
+                            </li>
                             <li><a href="contact.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-12">
@@ -215,7 +225,7 @@
                             <a href="#" style="color: white !important" >Join Us</a>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
 
@@ -239,8 +249,8 @@
     <nav class="right_menu_togle">
         <div class="close-btn"><span id="nav-close" class="text-center">x</span></div>
         <div class="canvas-logo">
-            <a href="index.html"><img src="{{ asset('assets/site/images/logo-white.png') }}" alt="logo"></a>
-        </div> 
+            <a href="{{route('home')}}"><img src="{{ asset('assets/site/images/logo-white.png') }}" alt="logo"></a>
+        </div>
         <ul class="sidebarnav_menu list-unstyled main-menu">
             <!--Home Menu Start-->
             <li class="current-menu-item menu-item-has-children"><a href="#">Home</a>
@@ -360,5 +370,12 @@
     @include('includes.scripts')
 
 </body>
-
+<script>
+    var showText = function (target, message, index, interval) {
+        if (index < message.length) {
+            $(target).append(message[index++]);
+            setTimeout(function () { showText(target, message, index, interval); }, interval);
+        }
+    }
+</script>
 </html>
