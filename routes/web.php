@@ -33,17 +33,15 @@ Route::group(
     Route::get('/allSubject', 'Site\SubjectController@allSubjects')->name('allSubjects');
     Route::get('/instructors', 'Site\SubjectController@allInstructors')->name('allInstructors');
     Route::get('/blogs', 'Site\SubjectController@allBlogs')->name('blogs');
+    Route::get('/blog/details/{id}', 'Site\SubjectController@blog')->name('blog.details');
 
     Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.about');})->name('about');
-    Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
-    // Route::get('/subject', function () {return view('Site.subject');})->name('subject');
     Route::get('/lesson', function () {return view('Site.lessonrtl');})->name('lesson');
     Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.aboutrtl');})->name('about');
-    Route::get('/blog/details', function () {return view('Site.blogDetails');})->name('blog.details');
 
     Route::get('rand',function (){
     $rand = rand(0,1);
