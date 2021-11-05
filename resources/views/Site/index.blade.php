@@ -71,7 +71,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">Exams and evaluation</h4>
-                                <p>The Exam and display the results after completion and show your weaknesses in the test
+                                <p style="height:150px">The Exam and display the results after completion and show your weaknesses in the test
                                     and the most section that must be reviewed</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">Question bank</h4>
-                                <p>A question bank to test your level that contains many questions and can be prepared and
+                                <p style="height:150px">A question bank to test your level that contains many questions and can be prepared and
                                     displayed in a random manner and errors are known</p>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">Blogs</h4>
-                                <p>Lots of articles to increase knowledge, experience and scientific culture</p>
+                                <p style="height:150px">Lots of articles to increase knowledge, experience and scientific culture</p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">Monitoring and evaluation</h4>
-                                <p>You can follow your level and weaknesses in the tests by displaying the results of all
+                                <p style="height:150px">You can follow your level and weaknesses in the tests by displaying the results of all
                                     previous exams and your mistakes in them</p>
                             </div>
                         </div>
@@ -314,9 +314,9 @@
                                 </div>
                                 <h4 class="news-title"><a href="blog-details.html">{{ $blogs[0]->title_en }}</a>
                                 </h4>
-                                <div class="news-desc"> 
+                                <div class="news-desc">
                                     <div class="desciptionn" style="display: none"><?php $x = html_entity_decode($blogs[0]->description_en);
-                                        echo $x; 
+                                        echo $x;
                                         $e = $blogs[0]->id;
                                         ?></div>
 
@@ -361,7 +361,7 @@
                                     </div>
                                     <div class="news-desc">
                                         <div class="desciptionn1" style="display: none"><?php $x = html_entity_decode($blogs[$i]->description_en);
-                                                        echo $x; 
+                                                        echo $x;
                                                         $r = $blogs[$i]->id
                                                         ?></div>
 
@@ -458,7 +458,7 @@
                             </div>
                             <div class="services-desc text-center">
                                 <h4 class="services-title">اختبارات و تقيم</h4>
-                                <p>الاختبار و عرض النتائج بعد الانتهاء و عرض نقاط ضعفك في الاختبار واكثر قسم يجب مراجعته</p>
+                                <p style="height:100px">الاختبار و عرض النتائج بعد الانتهاء و عرض نقاط ضعفك في الاختبار واكثر قسم يجب مراجعته</p>
                             </div>
                         </div>
                     </div>
@@ -469,7 +469,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">بنك اسئلة</h4>
-                                <p>بنك اسئله لاختبار مستواك يحتوي علي العديد من الاسئلة و يمكن اعداته و عرض الاسئلة بطريقة
+                                <p style="height:100px">بنك اسئله لاختبار مستواك يحتوي علي العديد من الاسئلة و يمكن اعداته و عرض الاسئلة بطريقة
                                     عشوائية و معرفة الاخطاء</p>
                             </div>
                         </div>
@@ -481,7 +481,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">المقالات</h4>
-                                <p>الكثير من المقالات لزيادة المعرفة و الخبره و الثقافة العلمية</p>
+                                <p style="height:100px">الكثير من المقالات لزيادة المعرفة و الخبره و الثقافة العلمية</p>
                             </div>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
                             </div>
                             <div class="services-desc">
                                 <h4 class="services-title">المتابعة و التقيم</h4>
-                                <p>تستطيع متابعة مستواك و نقاط ضعفك في الاختبارات من خلال عرض نتائج كل الامتحانات السابقة و
+                                <p style="height:100px">تستطيع متابعة مستواك و نقاط ضعفك في الاختبارات من خلال عرض نتائج كل الامتحانات السابقة و
                                     اخطائك بهما</p>
                             </div>
                         </div>
@@ -700,9 +700,9 @@
                                 </div>
                                 <h4 class="news-title"><a href="blog-details.html">{{ $blogs[0]->title_ar }}</a>
                                 </h4>
-                                <div class="news-desc"> 
+                                <div class="news-desc">
                                     <div class="desciptionn" style="display: none"><?php $x = html_entity_decode($blogs[0]->description_ar);
-                                        echo $x; 
+                                        echo $x;
                                         $q = $blogs[0]->id;
                                          ?></div>
 
@@ -747,7 +747,7 @@
                                     </div>
                                     <div class="news-desc">
                                         <div class="desciptionn1" style="display: none"><?php $x = html_entity_decode($blogs[$i]->description_ar);
-                                                        echo $x; 
+                                                        echo $x;
                                                         $h = $blogs[$i]->id ?></div>
 
                                         <div class="" id="dev{{ $h }}"></div>
