@@ -34,13 +34,12 @@ Route::group(
     Route::get('/instructors', 'Site\SubjectController@allInstructors')->name('allInstructors');
     Route::get('/blogs', 'Site\SubjectController@allBlogs')->name('blogs');
     Route::get('/blog/details/{id}', 'Site\SubjectController@blog')->name('blog.details');
+    Route::get('/quiz/{id}', 'Site\QuizController@index')->name('exam');
 
-    Route::get('/lesson', function () {return view('Site.lesson');})->name('lesson');
-    Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
+    Route::any('/exam/star/{id}', 'Site\QuizController@examStore')->name('student.exam.store');
+
     Route::get('/about', function () {return view('Site.about');})->name('about');
 
-    Route::get('/lesson', function () {return view('Site.lessonrtl');})->name('lesson');
-    Route::get('/quiz', function () {return view('Site.quiz');})->name('quiz');
     Route::get('/about', function () {return view('Site.aboutrtl');})->name('about');
 
     Route::get('rand',function (){

@@ -360,7 +360,7 @@
                                 <div class="course-img">
                                     <img src="{{ asset('assets/images/subjects/' . $allSubject->media->file) }}"
                                         style="height: 250px !important;" alt="" />
-                                    <span class="course-value">{{ $subject->rate }} <i class="fa fa-star"></i>
+                                    <span class="course-value">{{ $allSubject->rate }} <i class="fa fa-star"></i>
                                     </span>
                                     <div class="course-toolbar">
 
@@ -369,7 +369,7 @@
                                 <div class="course-body" style="height: 150px !important;">
                                     <div class="course-desc">
                                         <h4 class="course-title"><a
-                                                href="{{ route('subject', ['id' => $subject->id]) }}">{{ $allSubject->title_en }}</a>
+                                                href="{{ route('subject', ['id' => $allSubject->id]) }}">{{ $allSubject->title_en }}</a>
                                         </h4>
                                         <p>
                                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

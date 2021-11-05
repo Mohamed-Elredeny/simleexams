@@ -10,6 +10,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
+    {{-- @yield('style'); --}}
+    
     @include('includes.style')
 </head>
 
@@ -358,6 +360,7 @@
     </div>
     <!-- Search Modal End -->
     @include('includes.scripts')
+    @yield('script')
 
 </body>
 

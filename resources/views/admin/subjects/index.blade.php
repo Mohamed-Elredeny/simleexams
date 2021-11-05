@@ -29,7 +29,7 @@
                     </div>
                     @endif
                             <h4 class="">المواد الدراسية</h4>
-
+ 
                         <hr>
 
                     <table id="datatable" class="table table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
