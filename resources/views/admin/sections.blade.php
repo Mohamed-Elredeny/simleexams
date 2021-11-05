@@ -47,8 +47,8 @@
                 <span> الاختبارت  </span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="{{route('admin.subjects.index')}}">عرض الكل</a></li>
-                <li><a href="{{route('admin.subjects.create')}}">اضافة مادة جديد</a></li>
+                <li><a href="{{route('admin.exams.index')}}">عرض الكل</a></li>
+                <li><a href="{{route('admin.exams.create')}}">اضافة مادة جديد</a></li>
             </ul>
         </li>
         <li>

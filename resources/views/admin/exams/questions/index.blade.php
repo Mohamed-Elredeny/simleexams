@@ -64,14 +64,13 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                                     تحديد الكل
                                 </div>
                                 <div class="col-sm-1">
-                                    <input type="checkbox" class="form-control" name="examQuestions">
+                                    <input type="checkbox" class="form-control" name="exam_view">
                                 </div>
                             </div>
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
                                     <table class="display table table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-
                                         <thead>
                                         <tr>
                                             <th>الترتيب</th>
@@ -85,58 +84,30 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                                         @foreach($exams as $admin)
                                             <tr>
                                                 <td>
-                                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenterarEn{{$admin->id}}">
-                                                        عرض
-                                                    </button>
+                                                   {{$counter}}
                                                 </td>
-
-                                                <td>
-                                                    {{$admin->name_ar}}
+                                                <td >
+                                                    {{$admin->question->body}}
                                                 </td>
                                                 <td>
-                                                    {{$admin->name_en}}
-                                                </td>
-                                                <td>
-                                                    {{$admin->price}} ريال
-                                                </td>
-                                                <td>
-                                                    <a href="" class="btn btn-dark">
+                                                    <a type="button" class="btn btn-dark" href="{{route('admin.questions.show',['question'=>$admin->question->id])}}"  target="_blank">
                                                         عرض
                                                     </a>
                                                 </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenterarEn{{$admin->id}}">
-                                                        عرض
-                                                    </button>
-                                                </td>
-                                                <td>
-                                                    <center>
-                                                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 
-                                                            <div class="btn-group" role="group">
-                                                                <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    التحكم
-                                                                </button>
-                                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                                    <a class="btn btn-dark col-sm-12"  href="{{route('admin.exams.edit',['exam'=>$admin->id])}}">تعديل</a>
-                                                                    <form method="post" action="{{route('admin.exams.destroy',['exam'=>$admin->id])}}">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit" class="btn btn-dark col-sm-12" >حذف</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </center>
+                                                <td>
+                                                    <input type="checkbox" class="form-control" value="{{$admin->id}}" name="exam_remove[]">
+
                                                 </td>
                                             </tr>
+                                            <?php $counter +=1; ?>
                                         @endforeach
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <?php $counter =0; ?>
                         <input type="hidden"  name="exam_id" value="{{$id}}">
@@ -171,6 +142,7 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                                             </thead>
                                             <tbody>
                                             @foreach($section->questions as $admin)
+                                                @if(!in_array($admin->id,$ignore_ids_cuz_there_are_in_exam))
                                                 <tr>
                                                     <td>
                                                         {{$counter}}
@@ -181,15 +153,17 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                                                     </td>
 
                                                     <td>
-                                                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenterarEn{{$admin->id}}">
+                                                        <a type="button" class="btn btn-dark" href="{{route('admin.questions.show',['question'=>$admin->id])}}" target="_blank">
                                                             عرض
-                                                        </button>
+                                                        </a>
+
                                                     </td>
                                                     <td>
-                                                        <input type="checkbox" class="form-control" name="exam{{$admin->id}}">
+                                                        <input type="checkbox" class="fo-rm-control" value="{{$admin->id}}" name="exam_add[]">
 
                                                     </td>
                                                 </tr>
+                                                @endif
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -198,6 +172,7 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                             </div>
                         @endforeach
                     </div>
+                    <input type="hidden" value="{{$id}}" name="id">
                 </form>
 
 
@@ -219,7 +194,9 @@ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
                 </button>
             </div>
             <div class="modal-body text-center">
+                @if(isset($admin->media))
                 <img src="{{asset('assets/images/exams/'.$admin->media->file)}}" alt="" style="height:400px;width:400px">
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

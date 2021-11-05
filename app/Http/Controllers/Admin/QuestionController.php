@@ -14,7 +14,7 @@ class QuestionController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -142,7 +142,8 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $question = Question::find($id);
+        return view('admin.questions.show',compact('id','question'));
     }
     public function deleteImage($id,$model_type,$model_id){
         Media::destroy($id);
