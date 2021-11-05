@@ -44,7 +44,7 @@
                                         <li class="current-menu-item current_page_item "> <a href="{{ route('home') }}" class="home">Home</a></li>
                                         <li> <a href="{{ route('allSubjects') }}">Subjects</a> </li>
                                         <li> <a href="{{ route('allInstructors') }}">Instructors</a> </li> 
-                                        <li> <a href="blog.html">Blogs</a> 
+                                        <li> <a href="{{ route('blogs') }}">Blogs</a> 
                                         <li> <a href="contact.html">Contact</a></li>
                                         <li> <a href="about.html">About Us</a> </li>
                                         <li> <a href="{{LaravelLocalization::getLocalizedURL('ar') }}">Arabic</a> </li>
@@ -86,7 +86,7 @@
                                         <li class="current-menu-item current_page_item right-bar-icon"> <a href="{{ route('home') }}" class="home">الرئيسية</a> </li>
                                         <li class="right-bar-icon"> <a href="{{ route('allSubjects') }}">المواد</a> </li>
                                         <li class="right-bar-icon"> <a href="{{ route('allInstructors') }}">الاساتذة</a> </li>
-                                        <li class="right-bar-icon"> <a href="blog.html">مقالات</a> </li>
+                                        <li class="right-bar-icon"> <a href="{{ route('blogs') }}">مقالات</a> </li>
                                         <li class="right-bar-icon"> <a href="contact.html">تواصل</a></li>
                                         <li class="right-bar-icon"> <a href="about.html">من نحن</a> </li>
                                         <li class="right-bar-icon"> <a href="{{LaravelLocalization::getLocalizedURL('ar') }}">عربية</a> </li>

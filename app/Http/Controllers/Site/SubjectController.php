@@ -36,4 +36,11 @@ class SubjectController extends Controller
         $blogs = Blog::get();
         return view('Site.blog', compact('blogs'));
     }
+
+    public function blog($id)
+    {
+        $blog = Blog::find($id);
+        $blogs = Blog::inRandomOrder()->limit(5)->get();
+        return view('Site.blogDetails', compact('blog', 'blogs'));
+    }
 }
