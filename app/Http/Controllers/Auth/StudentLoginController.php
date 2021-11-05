@@ -22,7 +22,7 @@ class StudentLoginController extends Controller
     {
         if(Auth::guard('student')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
         {
-            return redirect()->route('student.dashboard');
+            return redirect()->route('home');
         }
 
         // if unsuccessful

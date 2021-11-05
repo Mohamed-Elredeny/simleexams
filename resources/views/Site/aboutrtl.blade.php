@@ -1,6 +1,5 @@
-@extends('layouts.appRtl')
+@extends('layouts.app')
 @section('content')
-
     <!-- Breadcrumbs Start -->
     <div class="rs-breadcrumbs bg7 breadcrumbs-overlay">
         <div class="breadcrumbs-inner">
@@ -10,7 +9,7 @@
                         <h1 class="page-title">About Us</h1>
                         <ul>
                             <li>
-                                <a class="active" href="index.html">Home</a>
+                                <a class="active" href="{{route('home')}}">Home</a>
                             </li>
                             <li>About Us</li>
                         </ul>
